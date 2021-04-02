@@ -11,7 +11,6 @@ public class StudyApplication {
 
     public static void main(String[] args) {
         Map<Integer,Integer> map = new HashMap();
-        map.containsKey()
         SpringApplication.run(StudyApplication.class, args);
     }
 
