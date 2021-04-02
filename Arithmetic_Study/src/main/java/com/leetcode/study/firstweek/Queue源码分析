@@ -1,0 +1,16 @@
+分析Queue源码：
+	1.Queue<E>是一个接口，并且继承了Collection<E>接口。
+	
+	2.Queue接口内有6个方法，分别是 
+		boolean add(E e); 添加一个元素。若容量不足抛异常
+		boolean offer(E e); 添加一个元素。
+		
+		E remove(); 移除头元素，若队列为空，则抛NoSuchElementException异常
+		E poll();   移除头元素，若队列为空，则返回null
+		
+		E element(); 获取头元素，若队列为空，则抛NoSuchElementException异常
+		E peek();    获取头元素，若队列为空，则抛返回null
+		
+
+分析PriorityQueue源码：
+	
