@@ -7,7 +7,7 @@ package com.leetcode.study.firstweek.linklist;
  * 输出：[1,1,2,3,4,4]
  */
 public class MergeTwoLists {
-    // 迭代,哨兵
+    // 迭代（主要思路是获取尾结点和哨兵）
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode result = new ListNode(-1); // 哨兵
         ListNode tail = result; // 尾结点
