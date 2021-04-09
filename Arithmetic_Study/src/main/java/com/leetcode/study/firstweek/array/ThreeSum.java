@@ -18,38 +18,33 @@ import java.util.*;
  * 输出：[]
  */
 public class ThreeSum {
-    /**
-     * 当 sum== 0 时，nums[L] == nums[L+1] 则会导致结果重复，应该跳过，L++
-     * 当 sum == 0 时，nums[R] == nums[R-1] 则会导致结果重复，应该跳过，R--
-     * 时间复杂度：O(n^2) n为数组长度
-     */
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums); // 首先对数组进行排序
         List<List<Integer>> res = new ArrayList<>();
-        // 排序后固定一个数 nums[k],再使用左右指针指向 nums[k]后面的两端
-        for (int k = 0; k < nums.length - 2; k++) {
-            if (nums[k] > 0) { // 如果 nums[k]> 0，则三数之和必然无法等于 0，结束循环
+        // 排序后固定一个数 nums[i],再使用左右指针j,k指向 nums[i]后面的两端
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0) { // 如果 nums[i]> 0，则三数之和必然无法等于 0，结束循环
                 break;
             }
-            if (k > 0 && nums[k] == nums[k + 1]) { // 该数字重复，会导致结果重复，所以应该跳过
+            if (i > 0 && nums[i] == nums[i - 1]) { // 该数字重复，会导致结果重复，所以应该跳过
                 continue;
             }
-            int i = k + 1;
-            int j = nums.length - 1;
-            while (i < j) {
-                int sum = nums[k] + nums[i] + nums[j];
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
                 if (sum < 0) {
-                    // i += 1并跳过所有重复的nums[i]
-                    while (i < j && nums[i] == nums[++i]) ;
+                    // j += 1并跳过所有重复的nums[j]
+                    while (j < k && nums[j] == nums[++j]) ;
                 } else if (sum > 0) {
-                    // j -= 1并跳过所有重复的nums[j]
-                    while (i < j && nums[j] == nums[--j]) ;
+                    // k -= 1并跳过所有重复的nums[k]
+                    while (j < k && nums[k] == nums[--k]) ;
                 } else {
-                    res.add(new ArrayList<>(Arrays.asList(nums[k], nums[i], nums[j])));
-                    // i += 1并跳过所有重复的nums[i]
-                    while (i < j && nums[i] == nums[++i]) ;
-                    // j -= 1并跳过所有重复的nums[j]
-                    while (i < j && nums[j] == nums[--j]) ;
+                    res.add(new ArrayList<>(Arrays.asList(nums[i], nums[j], nums[k])));
+                    // j += 1并跳过所有重复的nums[j]
+                    while (j < k && nums[j] == nums[++j]) ;
+                    // k -= 1并跳过所有重复的nums[k]
+                    while (j < k && nums[k] == nums[--k]) ;
                 }
             }
         }
