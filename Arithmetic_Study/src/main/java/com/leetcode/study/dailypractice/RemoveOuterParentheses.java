@@ -1,4 +1,4 @@
-package com.leetcode.study.secondweek;
+package com.leetcode.study.dailypractice;
 
 /**
  * 1021. 删除最外层的括号
