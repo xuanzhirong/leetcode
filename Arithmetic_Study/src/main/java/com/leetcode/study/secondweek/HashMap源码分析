@@ -1,0 +1,43 @@
+public V put(K key, V value) {
+        return putVal(hash(key), key, value, false, true); // 计算key的hash值，onlyIfAbsent = false
+}
+
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,boolean evict) {
+        Node<K,V>[] tab; Node<K,V> p; int n, i;
+        if ((tab = table) == null || (n = tab.length) == 0) // 如果table没有初始化,则需要初始化
+            n = (tab = resize()).length;  // 初始化table容量,若没有指定初始容量则默认为16
+        if ((p = tab[i = (n - 1) & hash]) == null) // 若果tab[i]中没有key，则创建一个Node并存入tab[i]
+            tab[i] = newNode(hash, key, value, null);
+        else { // key的hash值相同
+            Node<K,V> e; K k;
+            if (p.hash == hash &&((k = p.key) == key || (key != null && key.equals(k)))) // tab[i]中的第一个元素，相同的key
+                e = p;
+            else if (p instanceof TreeNode) // 若当前tab[i]的链表是红黑树
+                e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+            else { // hash碰撞，链表法解决冲突
+                for (int binCount = 0; ; ++binCount) {
+                    if ((e = p.next) == null) {
+                        p.next = newNode(hash, key, value, null); // 加入到链表尾
+                        if (binCount >= TREEIFY_THRESHOLD - 1) // 如果链表长度>=8，则转化为红黑树
+                            treeifyBin(tab, hash); // 转化为红黑树
+                        break;
+                    }
+                    if (e.hash == hash &&((k = e.key) == key || (key != null && key.equals(k)))) // tab[i]链表中存在相同的key
+                        break;
+                    p = e;
+                }
+            }
+            if (e != null) { // existing mapping for key
+                V oldValue = e.value;
+                if (!onlyIfAbsent || oldValue == null)
+                    e.value = value;
+                afterNodeAccess(e);
+                return oldValue;
+            }
+        }
+        ++modCount;
+        if (++size > threshold) // 需要扩容 size > capacity(默认16) * loadFactor(默认0.75)
+            resize(); // 每次扩容后的容量为原来的2倍，且是2^n
+        afterNodeInsertion(evict);
+        return null;
+}
