@@ -1,4 +1,4 @@
-package com.leetcode.study.secondweek.deque.circulardeque;
+package com.leetcode.study.firstweek.deque.circulardeque;
 
 /**
  * 641. 设计循环双端队列
@@ -15,7 +15,7 @@ package com.leetcode.study.secondweek.deque.circulardeque;
  * isEmpty()：检查双端队列是否为空。
  * isFull()：检查双端队列是否满了
  */
-public class ArrayCircularDeque implements CircularDeque{
+public class ArrayCircularDeque implements CircularDeque {
     private int capacity;
     private int[] arr;
     private int front;

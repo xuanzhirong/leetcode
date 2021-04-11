@@ -1,4 +1,4 @@
-package com.leetcode.study.secondweek.deque.circulardeque;
+package com.leetcode.study.firstweek.deque.circulardeque;
 
 /**
  * 641. 设计循环双端队列
