@@ -13,4 +13,18 @@ package com.leetcode.study.week1.array;
  * 必须在原数组上操作，不能拷贝额外的数组。尽量减少操作次数。
  */
 public class MoveZeroes {
+    /**
+     * 双指针
+     * i指向0，j指向非0，当i=0 j!=0 时交换
+     */
+    public void moveZeroes(int[] nums) {
+        int i = 0;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != 0) {
+                int tem = nums[j];
+                nums[j] = nums[i];
+                nums[i++] = tem;
+            }
+        }
+    }
 }
