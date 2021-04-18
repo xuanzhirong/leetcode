@@ -23,11 +23,18 @@ public class Subsets {
         if (nums == null) {
             return res;
         }
-        subsets(nums, 0, res);
+        dfs(res, new ArrayList<>(), nums, 0);
         return res;
     }
 
-    private void subsets(int[] nums, int n, List<List<Integer>> res) {
-
+    private void dfs(List<List<Integer>> res, List<Integer> subList, int[] nums, int index) {
+        if (index == nums.length) {
+            res.add(new ArrayList<>(subList));
+            return;
+        }
+        dfs(res, subList, nums, index + 1);
+        subList.add(nums[index]);
+        dfs(res, subList, nums, index + 1);
+        subList.remove(subList.size() - 1);
     }
 }
