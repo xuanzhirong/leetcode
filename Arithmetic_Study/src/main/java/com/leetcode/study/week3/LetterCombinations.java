@@ -41,13 +41,16 @@ public class LetterCombinations {
     }
 
     private void letterCombinations(String digits, int index, String sub, List<String> res) {
+        // terminator
         if (index >= digits.length()) {
             res.add(sub);
             return;
         }
+        // process
         char c = digits.charAt(index);
         List<String> list = map.get(c);
         for (String s : list) {
+            // drill down
             letterCombinations(digits, index + 1, sub + s, res);
         }
     }
