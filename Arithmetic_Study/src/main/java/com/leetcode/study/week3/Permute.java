@@ -27,7 +27,7 @@ public class Permute {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (visit[i] == true) { // 若已遍历过
+            if (visit[i]) { // 若已遍历过
                 continue;
             }
             visit[i] = true; // 标记为已遍历
