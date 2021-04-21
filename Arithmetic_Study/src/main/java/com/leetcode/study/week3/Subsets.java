@@ -18,6 +18,7 @@ import java.util.List;
  * 输出：[[],[0]]
  */
 public class Subsets {
+    // 思路，构建树，分选和不选
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null) {
@@ -32,9 +33,13 @@ public class Subsets {
             res.add(new ArrayList<>(subList));
             return;
         }
+        dfs(res, subList, nums, index + 1); // 不选的情况
+        subList.add(nums[index]); // 选的情况
         dfs(res, subList, nums, index + 1);
-        subList.add(nums[index]);
-        dfs(res, subList, nums, index + 1);
-        subList.remove(subList.size() - 1);
+        subList.remove(subList.size() - 1); // 回溯上一层
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Subsets().subsets(new int[]{1,2,3}));
     }
 }
