@@ -4,7 +4,7 @@ package com.leetcode.study.week4;
  * 69. x 的平方根
  */
 public class MySqrt {
-    int s;
+    private int s;
 
     // 牛顿迭代法
     public int mySqrt(int x) {
