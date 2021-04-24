@@ -31,4 +31,8 @@ public class LemonadeChange {
         }
         return true;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new LemonadeChange().lemonadeChange(new int[]{5, 5, 5, 10, 20}));
+    }
 }
