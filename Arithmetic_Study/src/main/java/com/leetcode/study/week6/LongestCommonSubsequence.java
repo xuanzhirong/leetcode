@@ -22,4 +22,8 @@ public class LongestCommonSubsequence {
         }
         return dp[m][n];
     }
+
+    public static void main(String[] args) {
+        System.out.println(new LongestCommonSubsequence().longestCommonSubsequence("abcde", "abd"));
+    }
 }
