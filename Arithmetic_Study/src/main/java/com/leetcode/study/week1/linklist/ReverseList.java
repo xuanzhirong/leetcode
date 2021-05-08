@@ -50,7 +50,7 @@ public class ReverseList {
         return cur;
     }
 
-    public class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 
