@@ -1,4 +1,4 @@
-package com.leetcode.study.week6;
+package com.leetcode.study.week5_6;
 
 /**
  * 1143. 最长公共子序列

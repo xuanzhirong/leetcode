@@ -1,4 +1,4 @@
-package com.leetcode.study.week6;
+package com.leetcode.study.week5_6;
 
 /**
  * 62. 不同路径
